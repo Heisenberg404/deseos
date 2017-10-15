@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Pendings List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let list of whishesService.arrayOfList">
+    <ion-item>Button!!</ion-item>
+    <h2>{{list.name}}</h2>
+    <ion-list>
+      <ion-item>
+        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
+        Tetris
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
+        Tetris
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
+        Tetris
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="goToAdd()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </button>
+
+  </ion-fab>
+</ion-content>

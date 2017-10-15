@@ -2,22 +2,25 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+//servicios
+import {WhishesListService} from '../app/services/whishes-list.component'
+//componentes
 import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { PendingsPage} from "../pages/pendings/pendings.component";
+import {FinishedPage} from "../pages/finished/finished.component";
+import {AddPage} from "../pages/add/add.component";
+import {PlaceholderPipe} from "./pipes/placeholder.pipe";
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    PendingsPage,
+    FinishedPage,
+    TabsPage,
+    AddPage,
+    PlaceholderPipe
   ],
   imports: [
     BrowserModule,
@@ -26,14 +29,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    PendingsPage,
+    FinishedPage,
+    TabsPage,
+    AddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    WhishesListService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
