@@ -12,6 +12,8 @@ import { PendingsPage} from "../pages/pendings/pendings.component";
 import {FinishedPage} from "../pages/finished/finished.component";
 import {AddPage} from "../pages/add/add.component";
 import {PlaceholderPipe} from "./pipes/placeholder.pipe";
+import {PendingsPipe} from "./pipes/pendings.pipe";
+import {DetailComponent} from "../pages/details/detail.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {PlaceholderPipe} from "./pipes/placeholder.pipe";
     FinishedPage,
     TabsPage,
     AddPage,
-    PlaceholderPipe
+    PlaceholderPipe,
+    DetailComponent,
+    PendingsPipe
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import {PlaceholderPipe} from "./pipes/placeholder.pipe";
     PendingsPage,
     FinishedPage,
     TabsPage,
-    AddPage
+    AddPage,
+    DetailComponent
   ],
   providers: [
     StatusBar,

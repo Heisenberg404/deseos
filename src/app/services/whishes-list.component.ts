@@ -7,15 +7,27 @@ export class WhishesListService {
   arrayOfList: List[] = [];
 
   constructor () {
-
-    let list1 = new List('university things');
-    let list2 = new List('videogames that I desire');
-    let list3 = new List('books for read');
-
-    this.arrayOfList.push(list1);
-    this.arrayOfList.push(list2);
-    this.arrayOfList.push(list3);
-
+    this.loadData();
     console.log("Servicion inicializado!!");
+  }
+
+  updateData() {
+    localStorage.setItem('data', JSON.stringify(this.arrayOfList));
+  }
+
+  loadData() {
+    if (localStorage.getItem('data')) {
+      this.arrayOfList = JSON.parse(localStorage.getItem('data'));
+    }
+  }
+
+  addList(list:List) {
+    this.arrayOfList.push(list);
+    this.updateData();
+  }
+
+  deleteList(idx: number) {
+    this.arrayOfList.splice(idx, 1);
+    this.updateData();
   }
 }

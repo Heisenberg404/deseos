@@ -5,22 +5,31 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let list of whishesService.arrayOfList">
-    <ion-item>Button!!</ion-item>
-    <h2>{{list.name}}</h2>
+  <ion-grid *ngIf="( whishesService.arrayOfList | pendings ).length === 0">
+    <ion-row>
+      <ion-col class="text-center clean-box" align="center">
+        <ion-icon class="big-icon" ios="ios-sunny" md="md-sunny"></ion-icon>
+        <p>There is not any pending list</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card *ngFor="let list of whishesService.arrayOfList | pendings; let i = index">
+    <ion-item color="dark" (click)="getDetails(list, i)">
+      <h2 class="text-back-in-black">{{list.name}}</h2>
+      <ion-note item-right>
+        {{list.items.length}} items
+      </ion-note>
+    </ion-item>
     <ion-list>
-      <ion-item>
-        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
-        Tetris
+      <ion-item (click)="getDetails(list, i)" *ngFor="let item of list.items | slice:0:2">
+        <ion-icon *ngIf="!item.complete" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+        <ion-icon *ngIf="item.complete" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+        {{item.name}}
       </ion-item>
-      <ion-item>
-        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
-        Tetris
+      <ion-item class="text-center" *ngIf="list.items.length > 2">
+        <ion-icon color="primary" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
       </ion-item>
-      <ion-item>
-        <ion-icon ios="ios-expand" md="md-expand"></ion-icon>
-        Tetris
-      </ion-item>
+
     </ion-list>
   </ion-card>
   <ion-fab right bottom>
